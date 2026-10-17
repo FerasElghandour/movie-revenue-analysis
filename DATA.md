@@ -1,0 +1,3 @@
+# Data and third-party materials
+
+The course TMDb CSV and its row previews are not redistributed. Obtain the exact `tmdb-movies.csv` through authorized access to the Udacity Investigate a Dataset materials and place it in the repository root or `Database_TMDb_movie_data/`. The input has 10,866 rows and 21 columns, including `revenue_adj`, `budget_adj`, `popularity`, `vote_average` and `runtime`. A current TMDb API export is not interchangeable with this historical extract. The course describes the source as cleaned TMDb data from Kaggle; redistribution rights for the exact export were not verified.
