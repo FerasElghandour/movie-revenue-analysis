@@ -8,14 +8,7 @@ A financial-data investigation that makes cohort coverage, missing-value treatme
 
 ## How it works
 
-```mermaid
-flowchart TD
-    N0["Movie revenue and budget records"] --> N1
-    N1["Flag zeros and missing monetary values"] --> N2
-    N2["Build analysis subsets without silent replacement"] --> N3
-    N3["Rank associations and bootstrap uncertainty"] --> N4
-    N4["Report descriptive findings and cleaning audit"]
-```
+![Implementation mechanism: Movie revenue and budget records → Flag zeros and missing monetary values → Build analysis subsets without silent replacement → Rank associations and bootstrap uncertainty → Report descriptive findings and cleaning audit](assets/mechanism.svg)
 
 ## Try a small example
 
