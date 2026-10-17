@@ -108,3 +108,7 @@ The intervals quantify within-cohort sampling uncertainty; they do not fix selec
 
 **Feras Elghandour** · [GitHub](https://github.com/FerasElghandour)  
 Data sources and applicable license notices: [DATA.md](DATA.md).
+
+## Reuse
+
+The original contributions listed in [LICENSING.md](LICENSING.md) are available under [MIT](LICENSE). This scoped grant preserves upstream notices and separate dataset, simulator, notebook and checkpoint terms.
