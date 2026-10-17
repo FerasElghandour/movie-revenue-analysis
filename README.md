@@ -10,6 +10,15 @@ A financial-data investigation that makes cohort coverage, missing-value treatme
 
 ![Implementation mechanism: Movie revenue and budget records → Flag zeros and missing monetary values → Build analysis subsets without silent replacement → Rank associations and bootstrap uncertainty → Report descriptive findings and cleaning audit](assets/mechanism.svg)
 
+
+
+## Reproduce and inspect
+
+The executable reproduction profile now records exact commands, input/source hashes, dependency versions, logs and pass/fail status. Its scope distinguishes behavior checks from full-data benchmarks.
+
+[Commands, artifacts and benchmark scope](BENCHMARKS.md) · [Versioned profiles](reproduction.json)
+
+
 ## Try a small example
 
 A small offline fixture exercises the public implementation. It demonstrates the behavior shown below; it does not replace the historical dataset, benchmark or production validation.
