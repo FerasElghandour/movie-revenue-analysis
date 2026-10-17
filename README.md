@@ -1,26 +1,38 @@
-# TMDb Revenue and Movie Characteristics
+# Movie Revenue Analysis
 
-Investigate the associations between inflation-adjusted movie revenue, budget, popularity, viewer rating and runtime in the supplied historical TMDb extract.
+Which movie characteristics are associated with higher revenue, and how much does incomplete financial reporting shape the result? This project analyzes historical movie records and makes the sample-selection tradeoffs explicit.
 
-## Completion
+**Python · pandas · NumPy · Matplotlib**
 
-Udacity project: **Investigate a Dataset**. Passed on **2026-10-11**, verified against the authenticated Udacity project-pass email. The receipt is kept privately.
+![Adjusted revenue distributions across movie budget quartiles](assets/analysis.png)
 
-This is a cleaned portfolio edition of the recovered implementation associated with that project. Udacity's email confirms the project passed; it does not certify this Git commit or identify the accepted archive by hash.
+## Results
 
-## Approach
+| Measure | Result |
+|---|---|
+| Source records / release years | 10,866 / 1960–2015 |
+| Budget–revenue rank correlation | 0.656 |
+| Popularity–revenue rank correlation | 0.608 |
+| Rating / runtime–revenue rank correlation | 0.240 / 0.284 |
+| Usable share of deduplicated records | 35.47% |
 
-Inspect missing and duplicate records, define usable financial observations, compare distributions and rank correlations, inspect budget quartiles, and repeat the comparisons under alternative sample definitions.
+## Implementation
 
-## Recorded results
+- Inspected duplicate records, zero financial values, missingness and cohort coverage before analysis.
+- Compared distributions and Spearman correlations for adjusted budget, popularity, rating and runtime.
+- Examined revenue distributions across budget quartiles and checked alternative sample definitions.
+- Documented selection effects and distinguished reported revenue from profitability.
 
-The saved analysis starts with 10,866 records covering 1960–2015. Spearman correlations with adjusted revenue are 0.656 for budget, 0.608 for popularity, 0.240 for viewer rating and 0.284 for runtime. Only 35.47% of deduplicated records have usable values for the main comparison.
+## Practical relevance
 
-These figures come from saved execution records. Release validation is described in `VALIDATION.md`.
+Demonstrates disciplined financial-data exploration: defining a usable cohort, testing the sensitivity of a conclusion and communicating what the evidence supports. The workflow is relevant to commercial research and reporting with incomplete observational data.
 
-## Run
+## Explore the project
 
-Release execution checks used Python 3.14.3; analysis dependency versions are pinned in `requirements.txt`.
+- `Investigate_a_Dataset.ipynb` — assessment, cleaning, visual analysis and sensitivity checks.
+- `DATA.md` — required historical input and source details.
+
+## Run locally
 
 ```sh
 python -m venv .venv
@@ -29,16 +41,15 @@ python -m pip install -r requirements.txt
 jupyter lab
 ```
 
-After supplying the historical CSV, open `Investigate_a_Dataset.ipynb` and run its cells from the repository root.
+Supply the historical `tmdb-movies.csv` as described in `DATA.md`. Run `Investigate_a_Dataset.ipynb` from the repository root.
 
-See [DATA.md](DATA.md) for inputs, attribution and excluded materials. Notebook outputs are cleared in this edition to exclude raw-data previews and machine-specific output.
+See [DATA.md](DATA.md) for required inputs and [VALIDATION.md](VALIDATION.md) for the checks and runtime versions.
 
-## Limitations
+## Scope
 
-Revenue is not profit. Zero financial values have uncertain meaning, the usable cohort is selective, and audience measures have unspecified collection times. There is no causal estimate or out-of-sample prediction claim.
+The comparisons are descriptive. Audience measures have unspecified collection dates, zero financial values have uncertain meaning, and the usable cohort is selective. Revenue excludes the cost information needed to assess profit.
 
-## Provenance and rights
+---
 
-Prepared by Mohamed Feras Elghandour with AI assistance in implementation, debugging, analysis and documentation. This repository does not claim unaided coding or production deployment. Udacity supplied the educational context; third-party tools and inputs retain their own rights. Course lesson text, assessment prompts, rubrics, answer keys, pass-email bodies and authenticated classroom captures are excluded.
-
-No new repository-wide software license is granted in this release. Existing third-party license notices remain applicable; see [DATA.md](DATA.md) and any `third_party/` or `vendor/` notices. This is an educational portfolio project, without a claim of Udacity endorsement.
+**Feras Elghandour** · [GitHub](https://github.com/FerasElghandour)  
+[Attribution and development notes](ATTRIBUTION.md)
