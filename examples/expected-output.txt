@@ -1,0 +1,1 @@
+{"fixture": "generated linear relationship, not movie evidence", "audit": {"input_rows": 16, "exact_duplicates_removed": 0, "deduplicated_rows": 16, "usable_rows": 15, "retained_percent": 93.75}, "rank": {"rho": 1.0, "ci95": [0.9999999999999998, 1.0]}}

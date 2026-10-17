@@ -6,6 +6,51 @@ A financial-data investigation that makes cohort coverage, missing-value treatme
 
 [![Quality checks](https://github.com/FerasElghandour/movie-revenue-analysis/actions/workflows/ci.yml/badge.svg)](https://github.com/FerasElghandour/movie-revenue-analysis/actions/workflows/ci.yml)
 
+## How it works
+
+```mermaid
+flowchart TD
+    N0["Movie revenue and budget records"] --> N1
+    N1["Flag zeros and missing monetary values"] --> N2
+    N2["Build analysis subsets without silent replacement"] --> N3
+    N3["Rank associations and bootstrap uncertainty"] --> N4
+    N4["Report descriptive findings and cleaning audit"]
+```
+
+## Try a small example
+
+A small offline fixture exercises the public implementation. It demonstrates the behavior shown below; it does not replace the historical dataset, benchmark or production validation.
+
+After the local setup below, run from the repository root:
+
+```sh
+python examples/quickstart.py
+```
+
+The [example source](examples/quickstart.py), [captured output](examples/expected-output.txt) and [execution record](examples/environment.json) keep this demonstration inspectable. Floating-point values may vary with library versions.
+
+Observed output from this run:
+
+```text
+{
+  "fixture": "generated linear relationship, not movie evidence",
+  "audit": {
+    "input_rows": 16,
+    "exact_duplicates_removed": 0,
+    "deduplicated_rows": 16,
+    "usable_rows": 15,
+    "retained_percent": 93.75
+  },
+  "rank": {
+    "rho": 1.0,
+    "ci95": [
+      0.9999999999999998,
+      1.0
+    ]
+  }
+}
+```
+
 ## What the evidence shows
 
 Budget and popularity have the strongest revenue associations in the usable cohort. The analysis also shows why **3,854 usable records out of 10,865 distinct records** cannot be treated as a representative sample of all movies.
