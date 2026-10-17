@@ -1,0 +1,481 @@
+{
+  "report": {
+    "title": "Movie revenue: evidence and selection",
+    "subtitle": "Strong relationships are only useful when the sample behind them is visible.",
+    "category": "Financial data / exploratory research",
+    "findings": [
+      "3,854 of 10,865 distinct records support the main financial comparison (35.47%).",
+      "Four cohort definitions expose how filtering changes the measured relationships.",
+      "Paired-record bootstrap intervals quantify within-cohort uncertainty without claiming to fix missing-data bias."
+    ],
+    "views": [
+      {
+        "label": "Main cohort",
+        "kind": "bar",
+        "unit": "Spearman correlation",
+        "series": [
+          {
+            "name": "Correlation with adjusted revenue",
+            "points": [
+              {
+                "x": "Budget",
+                "y": 0.655706743323523,
+                "low": 0.6353479199213818,
+                "high": 0.6756436060782873
+              },
+              {
+                "x": "Popularity",
+                "y": 0.6084893425987571,
+                "low": 0.5878885187081447,
+                "high": 0.6293750145744883
+              },
+              {
+                "x": "Viewer rating",
+                "y": 0.23981497328581164,
+                "low": 0.20984432265212918,
+                "high": 0.271473359962271
+              },
+              {
+                "x": "Runtime",
+                "y": 0.2844672889218278,
+                "low": 0.2538483499425026,
+                "high": 0.3150726793912709
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "At least 100 votes",
+        "kind": "bar",
+        "unit": "Spearman correlation",
+        "series": [
+          {
+            "name": "Correlation with adjusted revenue",
+            "points": [
+              {
+                "x": "Budget",
+                "y": 0.6225376529308405,
+                "low": 0.5954501435621717,
+                "high": 0.6489562476830065
+              },
+              {
+                "x": "Popularity",
+                "y": 0.4886670963689595,
+                "low": 0.456806584875936,
+                "high": 0.5207126284842425
+              },
+              {
+                "x": "Viewer rating",
+                "y": 0.15320202775243358,
+                "low": 0.11240384512528533,
+                "high": 0.1930091733430169
+              },
+              {
+                "x": "Runtime",
+                "y": 0.26997356273013606,
+                "low": 0.23147860740299556,
+                "high": 0.3072430441695941
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Financial upper 1% excluded",
+        "kind": "bar",
+        "unit": "Spearman correlation",
+        "series": [
+          {
+            "name": "Correlation with adjusted revenue",
+            "points": [
+              {
+                "x": "Budget",
+                "y": 0.644349455971892,
+                "low": 0.6227106687263557,
+                "high": 0.6670101273525461
+              },
+              {
+                "x": "Popularity",
+                "y": 0.5923134715382237,
+                "low": 0.5682662516665461,
+                "high": 0.6133839164776376
+              },
+              {
+                "x": "Viewer rating",
+                "y": 0.2239030253189153,
+                "low": 0.19398869555058493,
+                "high": 0.25361412732540184
+              },
+              {
+                "x": "Runtime",
+                "y": 0.26466985514783153,
+                "low": 0.2344707458191654,
+                "high": 0.2955947737388031
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Financial values at least $1,000",
+        "kind": "bar",
+        "unit": "Spearman correlation",
+        "series": [
+          {
+            "name": "Correlation with adjusted revenue",
+            "points": [
+              {
+                "x": "Budget",
+                "y": 0.6531233218335248,
+                "low": 0.6315892389812955,
+                "high": 0.6729238522883778
+              },
+              {
+                "x": "Popularity",
+                "y": 0.6071464734452204,
+                "low": 0.5865023219170185,
+                "high": 0.6271885299327417
+              },
+              {
+                "x": "Viewer rating",
+                "y": 0.2405956106565093,
+                "low": 0.21013701370783236,
+                "high": 0.2701911475529108
+              },
+              {
+                "x": "Runtime",
+                "y": 0.2823492324986714,
+                "low": 0.25120726148223443,
+                "high": 0.3109670913756059
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Coverage by release decade",
+        "kind": "bar",
+        "unit": "% retained",
+        "series": [
+          {
+            "name": "Usable financial records",
+            "points": [
+              {
+                "x": "1960",
+                "y": 19.613259668508288
+              },
+              {
+                "x": "1970",
+                "y": 26.181102362204726
+              },
+              {
+                "x": "1980",
+                "y": 37.15898400752587
+              },
+              {
+                "x": "1990",
+                "y": 42.77620396600567
+              },
+              {
+                "x": "2000",
+                "y": 40.988208871420554
+              },
+              {
+                "x": "2010",
+                "y": 28.848821081830792
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "methodology": [
+      {
+        "title": "Financial cohort",
+        "body": "Exact duplicates are removed. The analysis requires finite values, positive adjusted budget and revenue, and positive runtime. Excluded observations remain counted in the coverage audit."
+      },
+      {
+        "title": "Sensitivity and uncertainty",
+        "body": "Each cohort has 1,000 fixed-seed paired-record bootstrap draws for Spearman correlation. Whiskers show the 95% percentile interval. Filters are recomputed before resampling."
+      },
+      {
+        "title": "Decision boundary",
+        "body": "This is descriptive research, not a pre-release revenue forecast. Audience measures may be observed after release. Revenue is not profit; missing costs and selective financial reporting limit commercial inference."
+      }
+    ],
+    "notes": "The public report contains aggregate statistics only. Movie-level records and text are not embedded."
+  },
+  "results": {
+    "audit": {
+      "input_rows": 10866,
+      "exact_duplicates_removed": 1,
+      "deduplicated_rows": 10865,
+      "usable_rows": 3854,
+      "retained_percent": 35.471698113207545
+    },
+    "sensitivity": [
+      {
+        "sample": "Main cohort",
+        "feature": "budget_adj",
+        "n": 3854,
+        "rho": 0.655706743323523,
+        "ci95": [
+          0.6353479199213818,
+          0.6756436060782873
+        ]
+      },
+      {
+        "sample": "Main cohort",
+        "feature": "popularity",
+        "n": 3854,
+        "rho": 0.6084893425987571,
+        "ci95": [
+          0.5878885187081447,
+          0.6293750145744883
+        ]
+      },
+      {
+        "sample": "Main cohort",
+        "feature": "vote_average",
+        "n": 3854,
+        "rho": 0.23981497328581164,
+        "ci95": [
+          0.20984432265212918,
+          0.271473359962271
+        ]
+      },
+      {
+        "sample": "Main cohort",
+        "feature": "runtime",
+        "n": 3854,
+        "rho": 0.2844672889218278,
+        "ci95": [
+          0.2538483499425026,
+          0.3150726793912709
+        ]
+      },
+      {
+        "sample": "At least 100 votes",
+        "feature": "budget_adj",
+        "n": 2608,
+        "rho": 0.6225376529308405,
+        "ci95": [
+          0.5954501435621717,
+          0.6489562476830065
+        ]
+      },
+      {
+        "sample": "At least 100 votes",
+        "feature": "popularity",
+        "n": 2608,
+        "rho": 0.4886670963689595,
+        "ci95": [
+          0.456806584875936,
+          0.5207126284842425
+        ]
+      },
+      {
+        "sample": "At least 100 votes",
+        "feature": "vote_average",
+        "n": 2608,
+        "rho": 0.15320202775243358,
+        "ci95": [
+          0.11240384512528533,
+          0.1930091733430169
+        ]
+      },
+      {
+        "sample": "At least 100 votes",
+        "feature": "runtime",
+        "n": 2608,
+        "rho": 0.26997356273013606,
+        "ci95": [
+          0.23147860740299556,
+          0.3072430441695941
+        ]
+      },
+      {
+        "sample": "Financial upper 1% excluded",
+        "feature": "budget_adj",
+        "n": 3782,
+        "rho": 0.644349455971892,
+        "ci95": [
+          0.6227106687263557,
+          0.6670101273525461
+        ]
+      },
+      {
+        "sample": "Financial upper 1% excluded",
+        "feature": "popularity",
+        "n": 3782,
+        "rho": 0.5923134715382237,
+        "ci95": [
+          0.5682662516665461,
+          0.6133839164776376
+        ]
+      },
+      {
+        "sample": "Financial upper 1% excluded",
+        "feature": "vote_average",
+        "n": 3782,
+        "rho": 0.2239030253189153,
+        "ci95": [
+          0.19398869555058493,
+          0.25361412732540184
+        ]
+      },
+      {
+        "sample": "Financial upper 1% excluded",
+        "feature": "runtime",
+        "n": 3782,
+        "rho": 0.26466985514783153,
+        "ci95": [
+          0.2344707458191654,
+          0.2955947737388031
+        ]
+      },
+      {
+        "sample": "Financial values at least $1,000",
+        "feature": "budget_adj",
+        "n": 3819,
+        "rho": 0.6531233218335248,
+        "ci95": [
+          0.6315892389812955,
+          0.6729238522883778
+        ]
+      },
+      {
+        "sample": "Financial values at least $1,000",
+        "feature": "popularity",
+        "n": 3819,
+        "rho": 0.6071464734452204,
+        "ci95": [
+          0.5865023219170185,
+          0.6271885299327417
+        ]
+      },
+      {
+        "sample": "Financial values at least $1,000",
+        "feature": "vote_average",
+        "n": 3819,
+        "rho": 0.2405956106565093,
+        "ci95": [
+          0.21013701370783236,
+          0.2701911475529108
+        ]
+      },
+      {
+        "sample": "Financial values at least $1,000",
+        "feature": "runtime",
+        "n": 3819,
+        "rho": 0.2823492324986714,
+        "ci95": [
+          0.25120726148223443,
+          0.3109670913756059
+        ]
+      }
+    ],
+    "coverage_by_decade": [
+      {
+        "decade": 1960,
+        "source_records": 362,
+        "usable_records": 71,
+        "retained_percent": 19.613259668508288
+      },
+      {
+        "decade": 1970,
+        "source_records": 508,
+        "usable_records": 133,
+        "retained_percent": 26.181102362204726
+      },
+      {
+        "decade": 1980,
+        "source_records": 1063,
+        "usable_records": 395,
+        "retained_percent": 37.15898400752587
+      },
+      {
+        "decade": 1990,
+        "source_records": 1765,
+        "usable_records": 755,
+        "retained_percent": 42.77620396600567
+      },
+      {
+        "decade": 2000,
+        "source_records": 3562,
+        "usable_records": 1460,
+        "retained_percent": 40.988208871420554
+      },
+      {
+        "decade": 2010,
+        "source_records": 3605,
+        "usable_records": 1040,
+        "retained_percent": 28.848821081830792
+      }
+    ],
+    "budget_quartiles": [
+      {
+        "quartile": "Q1",
+        "n": 966,
+        "median_revenue_millions": 10.8237663921385
+      },
+      {
+        "quartile": "Q2",
+        "n": 961,
+        "median_revenue_millions": 41.794650613338
+      },
+      {
+        "quartile": "Q3",
+        "n": 964,
+        "median_revenue_millions": 80.2756843930762
+      },
+      {
+        "quartile": "Q4",
+        "n": 963,
+        "median_revenue_millions": 217.506963800258
+      }
+    ],
+    "bootstrap": {
+      "draws": 1000,
+      "seed": 42,
+      "unit": "movie record",
+      "scope": "Within-cohort uncertainty only; selection bias and franchise dependence are not removed."
+    }
+  },
+  "provenance": {
+    "python": "3.14.3",
+    "dependencies": {
+      "numpy": "2.5.4",
+      "pandas": "3.0.6",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.9.1",
+      "torch": "2.14.1"
+    },
+    "code": [
+      {
+        "path": "src/movie_finance/__init__.py",
+        "sha256": "98522e345d8bbf781d16a508f3a8787687259c2de763d67b92a1f6acb37e2ea9"
+      },
+      {
+        "path": "src/movie_finance/__main__.py",
+        "sha256": "b7f27ed274a0379335a47ee4a79d6649e134c077dc34b804cd82b0df475d2feb"
+      },
+      {
+        "path": "src/movie_finance/analysis.py",
+        "sha256": "5549a9f058ca26508aeb149305f265aeefdd1383f9d60ff6e93572599fcc4a50"
+      },
+      {
+        "path": "src/movie_finance/reporting.py",
+        "sha256": "969bb41ff9405f5f1d0736546e6486bb42418327cff1d0e0954b7ab9ca9cc654"
+      }
+    ],
+    "inputs": [
+      {
+        "name": "tmdb-movies.csv",
+        "sha256": "c148ca17c3c2fe117048c7f6565374496f831ccdbddd91c5f8214a533679650f",
+        "bytes": 6883750
+      }
+    ]
+  }
+}

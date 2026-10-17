@@ -1,54 +1,63 @@
-# Movie Revenue Analysis
+# Movie Revenue: Selection, Sensitivity & Uncertainty
 
-Which movie characteristics are associated with higher revenue, and how much does incomplete financial reporting shape the result? This project analyzes historical movie records and makes the sample-selection tradeoffs explicit.
+A financial-data investigation that makes cohort coverage, missing-value treatment and sensitivity visible alongside the headline correlations.
 
-**Python · pandas · NumPy · Matplotlib**
+**[Open the interactive report](https://feraselghandour.github.io/movie-revenue-analysis/)** · [Architecture](ARCHITECTURE.md) · [Methods and validation](VALIDATION.md)
 
-![Adjusted revenue distributions across movie budget quartiles](assets/analysis.png)
+[![Quality checks](https://github.com/FerasElghandour/movie-revenue-analysis/actions/workflows/ci.yml/badge.svg)](https://github.com/FerasElghandour/movie-revenue-analysis/actions/workflows/ci.yml)
 
-## Results
+## What the evidence shows
+
+Budget and popularity have the strongest revenue associations in the usable cohort. The analysis also shows why **3,854 usable records out of 10,865 distinct records** cannot be treated as a representative sample of all movies.
 
 | Measure | Result |
 |---|---|
-| Source records / release years | 10,866 / 1960–2015 |
-| Budget–revenue rank correlation | 0.656 |
-| Popularity–revenue rank correlation | 0.608 |
-| Rating / runtime–revenue rank correlation | 0.240 / 0.284 |
-| Usable share of deduplicated records | 35.47% |
+| Source records | 10,866 |
+| Usable financial cohort | 3,854 records; 35.47% retained |
+| Budget–revenue Spearman correlation | 0.656; 95% interval 0.635–0.676 |
+| Popularity–revenue Spearman correlation | 0.608; 95% interval 0.588–0.629 |
+| Sensitivity analysis | Four cohort definitions; 1,000 bootstrap draws per estimate |
 
-## Implementation
+The interactive report includes selectable comparisons, a matching numerical table, CSV/JSON downloads and the reproducibility record. It also works offline: download `docs/index.html` and open it in a browser.
 
-- Inspected duplicate records, zero financial values, missingness and cohort coverage before analysis.
-- Compared distributions and Spearman correlations for adjusted budget, popularity, rating and runtime.
-- Examined revenue distributions across budget quartiles and checked alternative sample definitions.
-- Documented selection effects and distinguished reported revenue from profitability.
+[![Interactive evidence report](assets/report-preview.png)](https://feraselghandour.github.io/movie-revenue-analysis/)
 
-## Practical relevance
+## Engineering
 
-Demonstrates disciplined financial-data exploration: defining a usable cohort, testing the sensitivity of a conclusion and communicating what the evidence supports. The workflow is relevant to commercial research and reporting with incomplete observational data.
+- An explicit financial-cohort quality gate and coverage audit by release decade.
+- Paired-record bootstrap intervals for each relationship.
+- Recomputed correlations under vote-count, upper-tail and minimum-financial-value filters.
+- An interactive view that compares the result and its uncertainty across cohort definitions.
 
-## Explore the project
+The analysis is packaged under `src/movie_finance/`; notebooks remain available for the longer exploratory narrative. Small root-level entry points preserve existing commands.
 
-- `Investigate_a_Dataset.ipynb` — assessment, cleaning, visual analysis and sensitivity checks.
-- `DATA.md` — required historical input and source details.
+## Reproduce
 
-## Run locally
+Use Python 3.11 or later and a separate virtual environment for this repository.
 
 ```sh
 python -m venv .venv
 . .venv/bin/activate
-python -m pip install -r requirements.txt
-jupyter lab
+python -m pip install -e ".[dev]"
+python -m movie_finance --input /path/to/tmdb-movies.csv --output reports
+python -m pytest -q
 ```
 
-Supply the historical `tmdb-movies.csv` as described in `DATA.md`. Run `Investigate_a_Dataset.ipynb` from the repository root.
+Use the historical extract described in [DATA.md](DATA.md). Current API exports are not interchangeable with it. The public report contains aggregate statistics, without movie-level text or records.
 
-See [DATA.md](DATA.md) for required inputs and [VALIDATION.md](VALIDATION.md) for the checks and runtime versions.
+Each run writes `index.html` and `metrics.json` to the chosen output directory. The JSON records the measured results, input SHA-256 fingerprints, source-code fingerprints, dependency versions and analytical settings. To use the notebooks, install the optional `notebooks` dependencies.
 
-## Scope
+## Interpretation
 
-The comparisons are descriptive. Audience measures have unspecified collection dates, zero financial values have uncertain meaning, and the usable cohort is selective. Revenue excludes the cost information needed to assess profit.
+The intervals quantify within-cohort sampling uncertainty; they do not fix selection bias or dependence between related films. Audience measures have unspecified observation dates and may be post-release. Revenue is not profit, and this analysis is not a pre-release prediction model.
+
+## Portfolio
+
+- [Weather-Aware Bike-Share Demand Analysis](https://github.com/FerasElghandour/bikeshare-weather-analysis)
+- [Bike-Share Customer Behavior](https://github.com/FerasElghandour/bikeshare-customer-behavior)
+- [Shared-Policy Continuous Control](https://github.com/FerasElghandour/tennis-reinforcement-learning)
 
 ---
 
-**Feras Elghandour** · [GitHub](https://github.com/FerasElghandour)
+**Feras Elghandour** · [GitHub](https://github.com/FerasElghandour)  
+Data sources and applicable license notices: [DATA.md](DATA.md).
