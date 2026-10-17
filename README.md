@@ -51,5 +51,4 @@ The comparisons are descriptive. Audience measures have unspecified collection d
 
 ---
 
-**Feras Elghandour** · [GitHub](https://github.com/FerasElghandour)  
-[Attribution and development notes](ATTRIBUTION.md)
+**Feras Elghandour** · [GitHub](https://github.com/FerasElghandour)
